@@ -5,31 +5,40 @@ import {
 	addItem,
 	removeItem,
 } from "../../redux/cart/cart.action";
-import "./checkout.style.scss";
-import { ReactComponent as Minus } from "../../assets/minus.svg";
-import { ReactComponent as Plus } from "../../assets/plus.svg";
+import {
+	CheckoutItemContainer,
+	Minus,
+	Plus,
+	ProductImage,
+	ProductImageContainer,
+	ProductName,
+	ProductQuantityContainer,
+	ProductQuantity,
+	ProductPrice,
+	RemoveButton,
+} from "./checkout-item.styles";
 
 const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
 	const { name, imageUrl, price, quantity } = cartItem;
 	return (
-		<div className="checkout-item">
-			<div className="image-container">
-				<img alt="item" src={imageUrl} />
-			</div>
-			<span className="name">{name}</span>
-			<span className="quantity">
+		<CheckoutItemContainer>
+			<ProductImageContainer>
+				<ProductImage alt="item" src={imageUrl} />
+			</ProductImageContainer>
+			<ProductName>{name}</ProductName>
+			<ProductQuantityContainer className="quantity">
 				<Minus
 					className="minus"
 					onClick={() => removeItem(cartItem)}
 				></Minus>
-				<span className="value">{quantity}</span>
+				<ProductQuantity>{quantity}</ProductQuantity>
 				<Plus className="plus" onClick={() => addItem(cartItem)}></Plus>
-			</span>
-			<span className="price">{price}</span>
-			<div className="remove-button" onClick={() => clearItem(cartItem)}>
+			</ProductQuantityContainer>
+			<ProductPrice>{price}</ProductPrice>
+			<RemoveButton onClick={() => clearItem(cartItem)}>
 				&#10005;
-			</div>
-		</div>
+			</RemoveButton>
+		</CheckoutItemContainer>
 	);
 };
 
