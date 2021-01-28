@@ -7,9 +7,11 @@ import {
 	CollectionPreviewItemsContainer,
 } from "./collection-preview.styles";
 
-const CollectionPreview = ({ title, items }) => (
+const CollectionPreview = ({ title, items, routeName }) => (
 	<CollectionPreviewContainer>
-		<CollectionPreviewTitle>{title}</CollectionPreviewTitle>
+		<CollectionPreviewTitle to={`/shop/${routeName}`}>
+			{title}
+		</CollectionPreviewTitle>
 		<CollectionPreviewItemsContainer>
 			{items
 				.filter((item, idx) => idx < 4)

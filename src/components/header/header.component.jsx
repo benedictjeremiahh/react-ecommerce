@@ -13,7 +13,6 @@ import {
 	LogoContainer,
 	MenusContainer,
 	MenuLink,
-	MenuDiv,
 } from "./header.styles";
 
 const Header = ({ currentUser, hidden }) => (
