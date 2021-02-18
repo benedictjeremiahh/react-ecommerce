@@ -19,3 +19,19 @@ export const selectCollectionForPreview = createSelector(
 			? Object.keys(collections).map((key) => collections[key])
 			: []
 );
+
+export const selectIsCollectionFetching = createSelector(
+	[selectShop],
+	(shop) => shop.isFetching
+);
+
+export const selectIsCollectionIsLoaded = createSelector(
+	[selectShop],
+	// !! return falsy value e.g 0, empty string, null. return true if it is a object {}
+	(shop) => !!shop.collections
+);
+
+export const selectErrorMessage = createSelector(
+	[selectShop],
+	(shop) => shop.errorMessage
+);

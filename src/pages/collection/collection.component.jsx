@@ -7,8 +7,19 @@ import {
 	CollectionPageContainer,
 	CollectionTitle,
 } from "./collection.styles";
+import {
+	SpinnerContainer,
+	SpinnerOverlay,
+} from "../../components/with-spinner/with-spinner.styles";
 
 const CollectionPage = ({ collection }) => {
+	if (!collection) {
+		return (
+			<SpinnerOverlay>
+				<SpinnerContainer />
+			</SpinnerOverlay>
+		);
+	}
 	const { title, items } = collection;
 	return (
 		<CollectionPageContainer>
